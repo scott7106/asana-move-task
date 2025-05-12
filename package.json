@@ -1,0 +1,30 @@
+{
+  "name": "asana-move-task",
+  "version": "1.0.0",
+  "description": "Action to move an Asana task to a different section in project board(s)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scott7106/asana-move-task.git"
+  },
+  "keywords": [
+    "github-actions",
+    "asana",
+    "github",
+    "move task"
+  ],
+  "author": "Scott Moody",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/scott7106/asana-move-task/issues"
+  },
+  "homepage": "https://github.com/scott7106/asana-move-task#readme",
+  "dependencies": {
+    "@actions/core": "^1.11.1",
+    "@actions/github": "^6.0.1",
+    "asana": "^3.0.16"
+  }
+}

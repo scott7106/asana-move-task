@@ -1,0 +1,15 @@
+name: 'Asana Move Task'
+description: 'Move Asana task to another project and section.'
+inputs:
+  asana-pat:
+    description: 'Asana Public Access Token.'
+    required: true
+  targets:
+    description: 'JSON array of target projects and sections. All referenced tasks are moved if it exists in target project.'
+    required: true
+branding:
+  icon: 'external-link'  
+  color: 'green'
+runs:
+  using: 'node20'
+  main: 'index.js'
