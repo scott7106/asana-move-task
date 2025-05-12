@@ -1,6 +1,6 @@
 {
   "name": "asana-move-task",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Action to move an Asana task to a different section in project board(s)",
   "main": "index.js",
   "scripts": {
@@ -25,6 +25,7 @@
   "dependencies": {
     "@actions/core": "^1.11.1",
     "@actions/github": "^6.0.1",
-    "asana": "^3.0.16"
+    "asana": "^3.0.16",
+    "semver": "^7.7.2"
   }
 }
