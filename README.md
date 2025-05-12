@@ -25,7 +25,7 @@ targets: '[{"project": "Backlog", "section": "Development Done"}, {"project": "C
 ## Example usage
 
 ```yaml
-uses: https://github.com/insurify/github-actions@v2.0.4
+uses: https://github.com/scott7106/asana-move-task@v1
 with:
   asana-pat: 'Your PAT'
   targets: '[{"project": "Backlog", "section": "Development Done"}, {"project": "Current Sprint", "section": "In Review"}]'
