@@ -1,7 +1,7 @@
 
 # Asana-Move-Task action
 
-This action uses the Asana API to move a task when a PR is opened or closed.
+This action uses the Asana API to move a task based on links in a PR description.
 
 ### Prerequisites
 
