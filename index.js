@@ -52,18 +52,18 @@ try {
       );
   
   let targets = TARGETS? JSON.parse(TARGETS) : [],
-    parseAsanaURL = null;
+    taskUrl = null;
 
   if (!ASANA_PAT){
-    throw({message: 'ASANA PAT Not Found!'});
+    throw new Error("Required parameter 'ASANA_PAT' Not Found!");
   }
   
-  if (!targets || targets.length === 0) { 
-    throw({message: 'No targets found!'});
+  if (!targets) { 
+    throw new Error("Required parameter 'targets' is not found!");
   }
   
   let matches = PULL_REQUEST.body.match(REGEX);
-  if (!matches && matches.length === 0) {
+  if (!matches) {
       core.info(`No Asana task URL found in the pull request body.`);
       return;
   }
@@ -78,14 +78,15 @@ try {
             .then(() => {
               core.info(`Asana task ${taskId} moved successfully.`);
             })
-            .catch(e => {
-              core.error(`Error moving Asana task ${taskId}: ${e.message}`);
+            .catch(error => {
+              core.error(`Error moving Asana task ${taskId}: ${error.message}`);
             });
       } else {
         core.info(`Invalid Asana task URL: ${taskUrl}`);
       }
     }
   }
-} catch (error) {
-  core.error(error.message);
+} catch (ex) {
+  core.error(ex.message);
+  throw ex;
 }
