@@ -1,5 +1,5 @@
 
-# Asana-Move-Task action
+# Asana-Move-Task Action
 
 This action uses the Asana API to move a task based on links in a PR description.
 
