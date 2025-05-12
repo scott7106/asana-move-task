@@ -1,5 +1,6 @@
 name: 'Asana Move Task'
 description: 'Move Asana task to another project and section.'
+author: 'scott7106'
 inputs:
   asana-pat:
     description: 'Asana Public Access Token.'
