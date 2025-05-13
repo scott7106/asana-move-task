@@ -47,7 +47,7 @@ try {
     TARGETS = core.getInput('targets'),
     PULL_REQUEST = github.context.payload.pull_request,
     REGEX = new RegExp(
-        "/https:\/\/app\.asana\.com\/(?<urlVersion>\\d+)/(?<firstId>\\d+)(\/project\/)?(?<secondId>\\d+)(\/task\/)?(?<thirdId>\\d+)?.*?\\)",
+        `https:\\/\\/app\\.asana\\.com\\/(?:\\S+)\\/project\\/(?<projectId>\\d+)\\/task\\/(?<taskId>\\d+)`,
         'g'
       );
   
@@ -70,14 +70,12 @@ try {
   }
 
   while ((taskUrl = REGEX.exec(PULL_REQUEST.body)) !== null) {
-    let { urlVersion, secondId, thirdId } = taskUrl.groups;
-    let taskId = null;
+    let { projectId, taskId } = taskUrl.groups;
     if (urlVersion) {
-      taskId = urlVersion === "0" ? secondId : thirdId;
       if (taskId) {
         asanaOperations(ASANA_PAT, targets, taskId)
             .then(() => {
-              core.info(`Asana task ${taskId} moved successfully.`);
+              core.info(`Asana task ${taskId} in project ${projectId} moved successfully.`);
             })
             .catch(error => {
               core.error(`Error moving Asana task ${taskId}: ${error.message}`);
