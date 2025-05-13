@@ -47,7 +47,7 @@ try {
     TARGETS = core.getInput('targets'),
     PULL_REQUEST = github.context.payload.pull_request,
     REGEX = new RegExp(
-        "https://app\\.asana\\.com/(?<urlVersion>\\d+)/(?<firstId>\\d+)(/project/)?(?<secondId>\\d+)(/task/)?(?<thirdId>\\d+)?.*?\\)",
+        "/https://app\\.asana\\.com/(?<urlVersion>\\d+)/(?<firstId>\\d+)(/project/)?(?<secondId>\\d+)(/task/)?(?<thirdId>\\d+)?.*?\\)",
         'g'
       );
   
