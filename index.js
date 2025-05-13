@@ -47,7 +47,7 @@ try {
     TARGETS = core.getInput('targets'),
     PULL_REQUEST = github.context.payload.pull_request,
     REGEX = new RegExp(
-        "/https://app\\.asana\\.com/(?<urlVersion>\\d+)/(?<firstId>\\d+)(/project/)?(?<secondId>\\d+)(/task/)?(?<thirdId>\\d+)?.*?\\)",
+        "/https:\/\/app\.asana\.com\/(?<urlVersion>\\d+)/(?<firstId>\\d+)(\/project\/)?(?<secondId>\\d+)(\/task\/)?(?<thirdId>\\d+)?.*?\\)",
         'g'
       );
   
@@ -65,6 +65,7 @@ try {
   let matches = PULL_REQUEST.body.match(REGEX);
   if (!matches) {
       core.info(`No Asana task URL found in the pull request body.`);
+      core.info(PULL_REQUEST.body)
       return;
   }
 
