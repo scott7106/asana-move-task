@@ -71,18 +71,16 @@ try {
 
   while ((taskUrl = REGEX.exec(PULL_REQUEST.body)) !== null) {
     let { projectId, taskId } = taskUrl.groups;
-    if (urlVersion) {
-      if (taskId) {
-        asanaOperations(ASANA_PAT, targets, taskId)
-            .then(() => {
-              core.info(`Asana task ${taskId} in project ${projectId} moved successfully.`);
-            })
-            .catch(error => {
-              core.error(`Error moving Asana task ${taskId}: ${error.message}`);
-            });
-      } else {
-        core.info(`Invalid Asana task URL: ${taskUrl}`);
-      }
+    if (taskId) {
+      asanaOperations(ASANA_PAT, targets, taskId)
+          .then(() => {
+            core.info(`Asana task ${taskId} in project ${projectId} moved successfully.`);
+          })
+          .catch(error => {
+            core.error(`Error moving Asana task ${taskId}: ${error.message}`);
+          });
+    } else {
+      core.info(`Invalid Asana task URL: ${taskUrl}`);
     }
   }
 } catch (ex) {
